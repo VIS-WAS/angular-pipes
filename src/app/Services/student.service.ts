@@ -6,7 +6,7 @@ import { Student } from '../Model/Students';
 })
 export class StudentService {
   student: Student[] = [
-    new Student(1, 'Vishwas', 'Male', new Date('25-09-1998'), 'BE', 525, 2500),
+    new Student(1, 'Vishwas', 'Male', new Date('09-25-1998'), 'BE', 525, 2500),
     new Student(
       2,
       'Mark Vought',
