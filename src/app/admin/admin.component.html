@@ -133,7 +133,7 @@
           />
         </td>
 
-        <td>{{ std.marks / totalMarks | percent : "2.2-2" }}</td>
+        <td>{{ std.marks | percentage : totalMarks : 2 }}</td>
 
         <td *ngIf="!isEditing || std.id !== stdIdToEdit">
           {{ std.fee | currency : "INR" : true : "3.2-2" }}
