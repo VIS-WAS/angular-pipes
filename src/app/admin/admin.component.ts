@@ -18,6 +18,8 @@ export class AdminComponent implements OnInit {
   isInserting: boolean = false;
   stdIdToEdit: number;
 
+  filterText: string = 'All';
+
   @ViewChild('name') Name: ElementRef;
   @ViewChild('gender') Gender: ElementRef;
   @ViewChild('dob') Dob: ElementRef;
