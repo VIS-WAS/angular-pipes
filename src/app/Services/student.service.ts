@@ -76,4 +76,18 @@ export class StudentService {
 
     //-------//to understand impure pipe//------------//
   }
+
+  filterStudentByGender(filterBy: string) {
+    if (
+      filterBy.toLowerCase() === 'all' ||
+      filterBy === '' ||
+      this.student.length === 0
+    ) {
+      return this.student;
+    } else {
+      return this.student.filter((std) => {
+        return std.gender.toLowerCase() === filterBy.toLowerCase();
+      });
+    }
+  }
 }
