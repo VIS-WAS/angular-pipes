@@ -20,6 +20,12 @@ export class AdminComponent implements OnInit {
 
   filterText: string = 'All';
 
+  totalStudent = new Promise((resolve, rejection) => {
+    setTimeout(() => {
+      resolve(this.students.length);
+    }, 2000);
+  });
+
   @ViewChild('name') Name: ElementRef;
   @ViewChild('gender') Gender: ElementRef;
   @ViewChild('dob') Dob: ElementRef;
