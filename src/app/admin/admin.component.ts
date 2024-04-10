@@ -55,6 +55,7 @@ export class AdminComponent implements OnInit {
       this.Marks.nativeElement.value,
       this.Fee.nativeElement.value
     );
+    //this.students = this.studentService.student;    // to understand impure pipe
     this.isInserting = false;
   }
 

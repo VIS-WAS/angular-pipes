@@ -3,9 +3,11 @@ import { Student } from '../Model/Students';
 
 @Pipe({
   name: 'studentfilter',
+  pure: false,
 })
 export class StudentFilterPipe implements PipeTransform {
   transform(list: Student[], filterBy: string) {
+    console.log('Filter pipe called');
     if (
       filterBy.toLowerCase() === 'all' ||
       filterBy === '' ||

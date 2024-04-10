@@ -67,5 +67,13 @@ export class StudentService {
     let id = this.student.length + 1;
     let student = new Student(id, name, gender, dob, course, marks, fee);
     this.student.push(student);
+
+    //-------//to understand impure pipe//------------//
+
+    // let studentCopy = [...this.student];
+    // studentCopy.push(student);
+    // this.student = studentCopy;
+
+    //-------//to understand impure pipe//------------//
   }
 }
