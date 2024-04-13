@@ -1,6 +1,8 @@
 <div class="modal">
   <div class="modal-content">
-    <p style="color: black">Are you sure you want to delete the user:</p>
+    <p style="color: black">
+      Are you sure you want to delete the user: {{ studentToDelete.name }}
+    </p>
     <div class="modal-actions">
       <button class="btn-ok" (click)="deleteConfirmation(true)">OK</button>
       <button class="btn-cancel" (click)="deleteConfirmation(false)">

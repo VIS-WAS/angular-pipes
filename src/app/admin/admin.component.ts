@@ -126,6 +126,8 @@ export class AdminComponent implements OnInit {
 
   @ViewChild(ViewContainer) container: ViewContainer;
 
+  onConfirmObs;
+
   constructor(
     private studentSerive: StudentService,
     private componentFactoryResolver: ComponentFactoryResolver
@@ -147,7 +149,22 @@ export class AdminComponent implements OnInit {
     containerViewRef.clear();
 
     // rending the component in the DOM
-    containerViewRef.createComponent(confirmDeleteComponentFactory);
+    const componetRef = containerViewRef.createComponent(
+      confirmDeleteComponentFactory
+    );
+    componetRef.instance.studentToDelete = student;
+
+    this.onConfirmObs = componetRef.instance.deleteUserClicked.subscribe(
+      (data) => {
+        this.onConfirmObs.unsubscribe();
+        containerViewRef.clear();
+        if (data) {
+          let index = this.studentService.student.indexOf(this.studentToDelete);
+          this.studentService.student.splice(index, 1);
+          console.log(index);
+        }
+      }
+    );
   }
 
   //-----------//dynamic component loading programatically//------------//
