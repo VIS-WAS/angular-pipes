@@ -7,6 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { PercentagePipe } from './Pipes/percentage.pipe';
 import { FormsModule } from '@angular/forms';
 import { StudentFilterPipe } from './Pipes/studentfilter.pipe';
+import { DeleteStudentComponent } from './admin/delete-student/delete-student.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { StudentFilterPipe } from './Pipes/studentfilter.pipe';
     AdminComponent,
     PercentagePipe,
     StudentFilterPipe,
+    DeleteStudentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

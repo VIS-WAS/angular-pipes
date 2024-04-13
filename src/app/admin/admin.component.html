@@ -156,7 +156,7 @@
           </button>
         </td>
         <td *ngIf="!isEditing || std.id !== stdIdToEdit">
-          <button class="delete-button">
+          <button class="delete-button" (click)="deleteStudent(std)">
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </td>
@@ -180,3 +180,9 @@
   </div>
   <!--PAGE FOOTER ENDS-->
 </div>
+
+<delete-student
+  *ngIf="showConfirmDeleteComponent"
+  [studentToDelete]="studentToDelete"
+  (deleteUserClicked)="userConfirmation($event)"
+></delete-student>

@@ -89,4 +89,25 @@ export class AdminComponent implements OnInit {
     this.isEditing = false;
     this.students = this.studentService.filterStudentByGender(this.filterText);
   }
+
+  showConfirmDeleteComponent: boolean = false;
+
+  studentToDelete: Student;
+
+  deleteStudent(student: Student) {
+    this.showConfirmDeleteComponent = true;
+
+    this.studentToDelete = student;
+  }
+
+  userConfirmation(value: boolean) {
+    this.showConfirmDeleteComponent = false;
+
+    console.log(value);
+    if (value) {
+      let index = this.studentService.student.indexOf(this.studentToDelete);
+      this.studentService.student.splice(index, 1);
+      console.log(index);
+    }
+  }
 }
