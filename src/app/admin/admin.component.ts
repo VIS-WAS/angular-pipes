@@ -1,7 +1,15 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  ElementRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { StudentService } from '../Services/student.service';
 import { Student } from '../Model/Students';
 import { OnInit } from '@angular/core';
+import { DeleteStudentComponent } from './delete-student/delete-student.component';
+import { ViewContainer } from '../Directive/viewcontainer.directive';
 
 @Component({
   selector: 'app-admin',
@@ -90,24 +98,57 @@ export class AdminComponent implements OnInit {
     this.students = this.studentService.filterStudentByGender(this.filterText);
   }
 
-  showConfirmDeleteComponent: boolean = false;
+  //-----------//dynamic component loading using *ngIf//------------//
+
+  // showConfirmDeleteComponent: boolean = false;
+
+  // studentToDelete: Student;
+
+  // deleteStudent(student: Student) {
+  //   this.showConfirmDeleteComponent = true;
+
+  //   this.studentToDelete = student;
+  // }
+
+  // userConfirmation(value: boolean) {
+  //   this.showConfirmDeleteComponent = false;
+
+  //   console.log(value);
+  //   if (value) {
+  //     let index = this.studentService.student.indexOf(this.studentToDelete);
+  //     this.studentService.student.splice(index, 1);
+  //     console.log(index);
+  //   }
+  // }
+  //-----------//dynamic component loading using *ngIF//------------//
+
+  //-----------//dynamic component loading programatically//------------//
+
+  @ViewChild(ViewContainer) container: ViewContainer;
+
+  constructor(
+    private studentSerive: StudentService,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   studentToDelete: Student;
-
   deleteStudent(student: Student) {
-    this.showConfirmDeleteComponent = true;
-
     this.studentToDelete = student;
+    this.showConfirmDelete(this.studentToDelete);
   }
 
-  userConfirmation(value: boolean) {
-    this.showConfirmDeleteComponent = false;
+  showConfirmDelete(student: Student) {
+    // creating an instance of confirmDelete component
+    const confirmDeleteComponentFactory =
+      this.componentFactoryResolver.resolveComponentFactory(
+        DeleteStudentComponent
+      );
+    const containerViewRef = this.container.viewContainer;
+    containerViewRef.clear();
 
-    console.log(value);
-    if (value) {
-      let index = this.studentService.student.indexOf(this.studentToDelete);
-      this.studentService.student.splice(index, 1);
-      console.log(index);
-    }
+    // rending the component in the DOM
+    containerViewRef.createComponent(confirmDeleteComponentFactory);
   }
+
+  //-----------//dynamic component loading programatically//------------//
 }

@@ -181,8 +181,19 @@
   <!--PAGE FOOTER ENDS-->
 </div>
 
-<delete-student
+<!-- //-----------//dynamic component loading usign *ngIF//------------// -->
+
+<!-- <delete-student
   *ngIf="showConfirmDeleteComponent"
   [studentToDelete]="studentToDelete"
   (deleteUserClicked)="userConfirmation($event)"
-></delete-student>
+></delete-student> -->
+
+<!-- //-----------//dynamic component loading using *ngIF//------------// -->
+
+<!-- //-----------//dynamic component loading programatically//------------// -->
+
+<div appContainer>
+  <!-- confirmDeleteComponentFactory -->
+</div>
+<!-- //-----------//dynamic component loading programatically//------------// -->

@@ -8,6 +8,7 @@ import { PercentagePipe } from './Pipes/percentage.pipe';
 import { FormsModule } from '@angular/forms';
 import { StudentFilterPipe } from './Pipes/studentfilter.pipe';
 import { DeleteStudentComponent } from './admin/delete-student/delete-student.component';
+import { ViewContainer } from './Directive/viewcontainer.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DeleteStudentComponent } from './admin/delete-student/delete-student.co
     PercentagePipe,
     StudentFilterPipe,
     DeleteStudentComponent,
+    ViewContainer,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
