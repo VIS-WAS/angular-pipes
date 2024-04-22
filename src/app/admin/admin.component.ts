@@ -28,11 +28,7 @@ export class AdminComponent implements OnInit {
 
   filterText: string = 'All';
 
-  totalStudent = new Promise((resolve, rejection) => {
-    setTimeout(() => {
-      resolve(this.students.length);
-    }, 2000);
-  });
+  totalStudent;
 
   @ViewChild('name') Name: ElementRef;
   @ViewChild('gender') Gender: ElementRef;
@@ -51,12 +47,14 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.students = this.studentService.filterStudentByGender(this.filterText);
+    this.totalStudent = this.getCount();
     this.totalMarks = this.studentService.totalMarks;
   }
 
   OnFilterValuechanged(event: any) {
     this.filterText = event.target.value;
     this.students = this.studentService.filterStudentByGender(this.filterText);
+    this.totalStudent = this.getCount();
   }
   OnInsertClicked() {
     this.isInserting = true;
@@ -76,6 +74,15 @@ export class AdminComponent implements OnInit {
     //this.students = this.studentService.student;    // to understand impure pipe
     this.isInserting = false;
     this.students = this.studentService.filterStudentByGender(this.filterText);
+    this.totalStudent = this.getCount();
+  }
+
+  getCount() {
+    return new Promise((resolve, rejection) => {
+      setTimeout(() => {
+        resolve(this.students.length);
+      }, 2000);
+    });
   }
 
   OnEditClicked(stdId: number) {
